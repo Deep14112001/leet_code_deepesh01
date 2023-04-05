@@ -1,0 +1,21 @@
+int minimumSum(int num) {
+        int ar[4];
+        int b=10;
+        int i=0;
+        while(num!=0){
+            ar[i]=num%b;
+            num/=10;
+            i++;
+        }
+        for(int j=0;j<3;j++){
+            for(int k=0;k<3-j;k++){
+                if(ar[k]>ar[k+1]){
+                    int c=ar[k];
+                    ar[k]=ar[k+1];
+                    ar[k+1]=c;
+                }
+            }
+        }
+        int c=ar[0]*10+ar[2];
+        int d=ar[1]*10+ar[3];
+        return c+d;
