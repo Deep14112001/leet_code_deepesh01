@@ -1,0 +1,16 @@
+vector<int> countBits(int n) {
+        vector<int> dp;
+        dp.push_back(0);
+        int val=n;
+        while(val){
+            int a=dp.size();
+            for(int i=0; i<a; i++){
+                dp.push_back(dp[i]+1);
+                val--;
+                if(val==0){
+                    break;
+                    }
+            }
+        }
+        return dp;
+    }
