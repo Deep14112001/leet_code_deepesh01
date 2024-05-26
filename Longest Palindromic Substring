@@ -1,0 +1,47 @@
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        int n = s.length();
+    if (n == 0) return "";
+    if (n == 1) return s;
+    string longest = "";
+
+    for (int i = 1; i < n - 1; ) {
+        int k = 1;
+        string current;
+
+        // Check if s[i-k] and s[i+k] are equal
+        while (i - k >= 0 && i + k < n && s[i - k] == s[i + k]) {
+            k++;
+        }
+        if (k > 1) {
+            current = s.substr(i - k + 1, 2 * k - 1);
+        }
+        
+        if (current.length() > longest.length()) {
+            longest = current;
+        }
+        
+        // Check if s[i] and s[i-1] are equal and then s[i+k] and s[i-k-1] are equal
+        if (i > 0 && s[i] == s[i-1]) {
+            k = 1;
+            while (i - k - 1 >= 0 && i + k < n && s[i - k - 1] == s[i + k]) {
+                k++;
+            }
+            if (k >= 1) {
+                current = s.substr(i - k, 2 * k);
+            }
+            
+            if (current.length() > longest.length()) {
+                longest = current;
+            }
+        }
+
+        // Move index to i + k
+        i += k;
+    }
+
+    return longest;
+
+    }
+};
