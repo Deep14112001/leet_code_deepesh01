@@ -4,9 +4,9 @@ public:
         int n = s.length();
     if (n == 0) return "";
     if (n == 1) return s;
-    string longest = "";
+    string longest = s.substr(0,1);
 
-    for (int i = 1; i < n - 1; ) {
+    for (int i = 1; i < n; ) {
         int k = 1;
         string current;
 
